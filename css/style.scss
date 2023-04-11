@@ -1,0 +1,342 @@
+$theme-colors:(
+    "primary": #a1016c
+);
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+}
+#preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #f2f2f2;
+    border-top: 6px solid #56829e ;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+}
+@-webkit-keyframes animate-preloader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes animate-preloader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+// Fonts:
+// font-family: 'Noto Sans KR', sans-serif;
+// font-family: 'Poppins', sans-serif;
+
+
+body{
+    background-color: black;
+}
+// Header
+#header{
+    margin: auto;
+    color: black;
+    height: 15vh;
+}
+#title{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5em;
+    align-self: center;
+}
+.selectOption{
+    max-width: 100%;
+    border-radius: 5px;
+    border: solid black;
+    margin:auto;
+    text-align: center;
+    float:right
+}
+.my-icon{
+    color: black;
+}
+.my-nav{
+    height:15vh;
+    z-index: 2;
+    border-bottom: solid black;
+}
+
+//Buttons
+button{
+    height: 30px;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    width: 100%;
+}
+
+.noMobile{
+    display: none;
+}
+
+// Map
+#map { 
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    top: 15vh;
+    z-index: 0;
+}
+
+// Footer
+.my-panel{
+    top: calc(100vh-20px);
+    bottom:0;
+    z-index: 2;
+    margin:0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+#pageNav{
+    position: absolute;
+    top: calc(90vh);
+    bottom:0;
+    z-index: 2;
+    margin: auto;
+    padding: 0;
+}
+
+//Information panels
+.infoPanel{
+    margin:0;
+    padding:0;
+    max-width: 100%;
+    width:100%;
+    max-height: 100vh !important;
+    text-align: center;
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+}
+#wiki{
+    color: white;
+}
+#wiki p {
+    font-size: 0.8em;
+}
+#sourcedCell{
+    width: 80%;
+    word-break: break-all;
+}
+.sourced{
+    color:#dd1d8d;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+
+}
+
+#contentCell{
+    text-align: left;   
+ }
+
+.card-header.collapsed {
+    background:black;
+    text-decoration: none;
+    text-align: center;
+ }
+.card-header:not(.collapsed) {
+    background: black;
+    color:white;
+    text-align: center;
+}
+#flag{
+    width: 15vh;
+}
+#weatherCell{
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+#summary{
+    font-size:small; 
+    padding:10px;
+} 
+
+//News 
+#articleImg{
+    float: right; 
+    width:150px;
+}
+.articleBtn{
+    display: inline-block;
+    width: 50%;
+}
+
+//Exchange
+#value{
+    width: 75%;
+}
+#exchangeResult{
+    flex: row;
+    justify-content: center;
+    align-items: center;
+}
+#exchangeBtn{
+    color: white;
+}
+.exchangeInput{
+    color:black;
+    font-weight: bolder;
+}
+
+//Country images
+.countryImages{
+    width: 250px;
+}
+.countryDescription p{
+    color:white;
+}
+
+
+//Modals
+.modal {
+    max-width: 80%;
+    max-height: 90%;
+    height: 100%;
+    width: fit-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: grey;
+    padding: 3px;
+    border-radius: 10px;
+    margin: 0;
+}
+.modal-dialog{
+    margin: 0;
+    height: 100%;
+    max-height: 90vh;
+}
+.modal-content{
+    background-color: black;
+    margin: 0;
+    height: 100%;
+    max-height: 100vh;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+table {
+    margin: 0;
+    table-layout:fixed;
+    max-width: 100%;
+    width:100%;
+    max-height: 100%;
+}
+.modal-header h4 {
+    text-align: left;
+    padding-left: 30px;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    height: 30px;
+    line-height: 25px;
+}
+.modal-header i {
+    font-size: 30px;
+    text-align: left;
+    color: white;
+}
+.modal-header i:hover {
+    color: dimgray;
+}
+.modalClose {
+   height: 30px;
+   line-height: 15px;
+}
+
+
+//Leaflet Zoom Buttons
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    font-size: 35px;
+}
+
+//Leaflet Easy Buttons
+#infoLeaf, #weatherLeaf, #newsLeaf, #exchangeLeaf, #imagesLeaf {
+    height: 30px; /* easyButton's height default */
+    width: 30px;  /*  easyButton's width default */
+    font-size: 18px;
+  }
+.leaflet-bar button:hover {
+    background-color: lightgrey;
+}
+
+// Media Queries:
+//576px
+// @include media-breakpoint-up(sm) { ... }
+//768px
+@include media-breakpoint-up(md) { 
+    //Header
+    #title{
+        font-size: 3em;
+    }
+    .my-icon{
+        align-self: center;
+    }
+    #countrySelect{
+        width:100%;
+    }
+
+    //Buttons:
+    .noMobile{
+        display: block;
+    }
+
+
+
+    //Panels
+    .my-panel{
+        top:25vh;
+        justify-content: start;
+        align-items: unset;
+    }
+
+
+    #pageNav{
+        top: 93%;
+    }
+    
+
+ }
+ 
+ 
+
+//992px
+//  @include media-breakpoint-up(lg) { ... }
+// @include media-breakpoint-up(xl) { ... }
