@@ -333,7 +333,7 @@
       })
     mymap.addControl(weatherButton);
 
-    //Covid-19 update
+    //News update
     newsButton = L.easyButton({
         id: 'covid',
         position: 'topleft',
@@ -869,7 +869,7 @@ $.ajax({
             },
             success: function(result) {
 
-                // console.log(result);
+                 console.log(result);
                 $("#countryImages").empty();
                 
                 if (result.status.name == "ok") {
