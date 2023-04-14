@@ -1,10 +1,13 @@
 <?php
 
 	$executionStartTime = microtime(true) / 1000;
-    $url="https://holidayapi.com/v1/holidays?pretty&country=" . $_REQUEST['country'] . "&year=2022&key=aaad04ec-c36b-4dc0-9dd3-0100b41567ee";
+    //$url="https://holidayapi.com/v1/holidays?pretty&country=" . $_REQUEST['country'] . "&year=2022&key=aaad04ec-c36b-4dc0-9dd3-0100b41567ee";
    
 
-	$url= 'https://holidayapi.com/v1/holidays?pretty&key=5b7bc58d-6717-4a21-92ef-d28b72d3033b&country=GB&year=2022';
+	//$url= 'https://holidayapi.com/v1/holidays?pretty&key=5b7bc58d-6717-4a21-92ef-d28b72d3033b&country=GB&year=2022';
+
+    $url= "https://holidayapi.com/v1/holidays?pretty&key=5b7bc58d-6717-4a21-92ef-d28b72d3033b&country=" . $_REQUEST['country'] ."&year=2022";
+
 
 	
 	$ch = curl_init();

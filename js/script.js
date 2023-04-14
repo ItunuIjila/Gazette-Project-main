@@ -807,7 +807,7 @@ $.ajax({
             },
             success: function(result) {
 
-                  console.log(result.data.results[0]);
+                  //console.log(result.data.results[0]);
                 
                 if (result.status.name == "ok" && result['data']['results']['0'] !== undefined) {
                     $("#newsCountry").empty();
@@ -864,13 +864,13 @@ $.ajax({
         // National Holidasy
         $.ajax({
             url: 'php/getHolidays.php',
-            type: 'GET',
+            type: 'POST',
             dataType: "JSON",
-            // data: {
-            //   country: $('#selectOption').val(),
-            // },
+            data: {
+              country: $('#selectOption').val(),
+            },
             success: function(result){
-          
+                console.log(result);
             //Using a for loop to retrieve the holidays from a given bordercode from the countryBorders.geo.json file. 
               const holiday = result.data;
               for (let i = 0; i < holiday.length; i++){
@@ -893,9 +893,11 @@ $.ajax({
             },
 
             
-            error: function(error){
-              error = "Lets try again"
-              console.log(error)
+            //error: function(error){
+            //   error = "Lets try again"
+            //   console.log(error)
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.warn("There has been an error " + errorThrown);
             }
           })
 
@@ -910,7 +912,7 @@ $.ajax({
             },
             success: function(result) {
 
-                 console.log(result);
+                 //console.log(result);
                 $("#countryImages").empty();
                 
                 if (result.status.name == "ok") {
