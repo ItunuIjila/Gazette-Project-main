@@ -344,26 +344,28 @@
           onClick: function(button, map){
             $("#newsModalScrollable").modal();
           },
-          title: 'scovid 19 update',
+          title: 'news update',
           icon: "fa-bullhorn"
         }]
       });
      mymap.addControl(newsButton);
 
-     
-
-
-
-
-//Exchange
-    var currencies = ["AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","USD","ZAR"];
-    
-    //Populate currencies -
-        $('#select').empty();
-        for (var i = 0; i <= currencies.length; i++) {
-            $('#from').append('<option value="' + currencies[i] + '">' + currencies[i] + '</option>');
-            $('#to').append('<option value="' + currencies[i] + '">' + currencies[i] + '</option>');
-        }
+      //National Holidays 
+    holidayButton = L.easyButton({
+        id: 'holiday',
+        position: 'topleft',
+        type: 'animate',
+        leafletClasses: true,
+        states:[{
+          stateName: 'show-news',
+          onClick: function(button, map){
+            $("#holidayModalScrollable").modal();
+          },
+          title: 'scovid 19 update',
+          icon: "fa-umbrella"
+        }]
+      });
+     mymap.addControl(holidayButton);
 
 
 
@@ -859,6 +861,45 @@ $.ajax({
             }
         });
 
+        // National Holidasy
+        $.ajax({
+            url: 'php/getHolidays.php',
+            type: 'GET',
+            dataType: "JSON",
+            // data: {
+            //   country: $('#selectOption').val(),
+            // },
+            success: function(result){
+          
+            //Using a for loop to retrieve the holidays from a given bordercode from the countryBorders.geo.json file. 
+              const holiday = result.data;
+              for (let i = 0; i < holiday.length; i++){
+                const holidayname = result.data[i].name;
+              const holidaydate = result.data[i].date;
+              const dateslice = holidaydate.slice(5)
+              var table = document.getElementById('holidayTable')
+              var row = `<tr>
+              <td class="holcol1">${holidayname}</td><td class="holcol2" >${dateslice}</td>
+              </tr>`
+              table.innerHTML += row;
+                
+              if (row){
+                $('#countryselect').change(function(){
+                  $('#holidayTable').empty();
+                })
+              }
+            }
+                
+            },
+
+            
+            error: function(error){
+              error = "Lets try again"
+              console.log(error)
+            }
+          })
+
+
         //Location Images:
         $.ajax({
             url: "php/locationImages.php",
@@ -889,6 +930,8 @@ $.ajax({
             }
         });
     });
+
+    
 
 
 

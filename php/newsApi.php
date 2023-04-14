@@ -1,11 +1,9 @@
 <?php
 
     $executionStartTime = microtime(true) / 1000;
-    //$apiKey = "ff5347611ad247d3bdcfeaf546c60f2d";
-
-    //$url = "http://newsapi.org/v2/top-headlines?country=" . $_REQUEST['country'] . "&apiKey=" . $apiKey;
+    
     $url='https://newsdata.io/api/1/news?apikey=pub_200725a7cc0f9aab0bf424d52708ab33503a1&q=' . $_REQUEST['country'];
-    //$url='https://newsdata.io/api/1/news?apikey=pub_200725a7cc0f9aab0bf424d52708ab33503a1';
+    
     //CURL
     //1.Initalise a new cURL resource(ch= curl handle)
     $ch = curl_init();
