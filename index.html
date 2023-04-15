@@ -4,22 +4,23 @@
     <title> The Gazetteer Project | Itunu Ijila</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-
+  
     <!--icons:-->
-    <link rel="icon" type="image/png" sizes="32x32" href="earth_icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/earth_icon.png">
 
     <!--Fonts:-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Noto+Sans+KR&family=Poppins:wght@100&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="dist\fontawesome\css\all.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
+
+    <!-- leaflet -->
+    <link rel="stylesheet" href="node_modules\leaflet\dist\leaflet.css">
     <link rel="stylesheet" href="node_modules\leaflet-easybutton\src\easy-button.css">
     <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="dist\leaflet.extra-markers.min.css">
+<link rel="stylesheet" href="dist\MarkerCluster.css">
+<link rel="stylesheet" href="dist/MarkerCluster.Default.css">
 </head>
 <body>
 
@@ -245,76 +246,6 @@
       </div>
     </div>
 
-    <!--holiday-->
-  <!-- <div class="modal fade" id="holidayModalScrollable" tabindex="-1" role="dialog" aria-labelledby="holidayModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-info text-white">
-          <h4 class="modal-title col-10" id="holidayModalScrollableTitle" data-dismiss="modal">National Holidays</h4>
-          <i class="fas fa-window-close col-2" data-dismiss="modal"></i>
-        </div>
-        </div>
-          <div class="modal-body"id="page6">
-          </br>
-            <table class="table table-dark table-stripped col-12 m-0" style="background-color: #75124f" >
-              <thead>
-                <tr>
-                  <th scope="col">National Holiday</th>
-                  <th scope="col">Date</th> 
-                </tr>      
-              </thead>
-              <tbody id="holidayTable">
-             
-              </tbody>
-            </table>
-
-            <div id="containerHolidayInfo">
-  
-            </div>
-          </div>
-          <div class="modal-footer bg-success">
-            <button type="button" class="btn btn-light text-black" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-    <div class="modal fade" id="holidayModalScrollable" tabindex="-1" role="dialog" aria-labelledby="holidayModalScrollableTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-info text-white">
-            <h2 class="modal-title" id="holidayModalScrollableTitle" data-dismiss="modal"> National Holiday</h2>
-           
-            <button type="button" class="btn-close col-2" data-dismiss="modal" aria-label="Close">
-              close
-            </button>
-          </div>
-          <div class="modal-body" id="page1">
-            <div class="row info-panel" aria-labelledby="headingOne">                          
-              <table class="table table-dark col-12 m-0"style="background-color: #dd97c2;">
-                <thead>
-                  
-                    <tr>
-                      <th scope="col">National Holiday</th>
-                      <th scope="col">Date</th> 
-                    </tr>      
-                  </thead>
-                  <tbody id="holidayTable">
-                 
-                  </tbody>
-                
-                
-              </table>
-            
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light text-black" data-dismiss="modal"style="background-color: #75124f;">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
 
   <!--Map Section-->
@@ -322,22 +253,26 @@
 
   </div>
   
-  <!--Preloader-->
+  <!--Preloader, needs work-->
   <div id="preloader"> </div>
 
   <!-- Scripts -->
   <script src="node_modules/moment/moment.js"></script>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/2ee2e70f6f.js" crossorigin="anonymous"></script>
-  <!--Leaflet.js javaScript--> <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-  crossorigin=""></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+  <script src="dist\fontawesome\js\all.js"></script>
+
+  <!--Leaflet.js javaScript--> 
+  <script src="node_modules\leaflet\dist\leaflet.js"></script>
+  <script src="node_modules\d3\d3.min.js"></script>
+  
+  <script src="dist\leaflet.markercluster.js"></script>
+  <script src="dist\topojson.min.js"></script>
+  <script src="dist\leaflet.extra-markers.min.js"></script>
   <script src="node_modules\leaflet-easybutton\src\easy-button.js"></script>
   <script src="js/Control.GlobeMiniMap.js"></script>
   <script src="js/script.js"></script>
+
 
 </body>
 </html>

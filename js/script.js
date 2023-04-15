@@ -21,8 +21,10 @@
         ext: 'png'
     });
     var redIcon = new L.Icon({
-        iconUrl: 'maple-leaf.svg',
+        iconUrl: 'images/maple-leaf.svg',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        //shadowUrl: 'images\markers_shadow.png',
+
         iconSize: [25, 41],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
@@ -31,26 +33,28 @@
     var PinIcon = L.Icon.extend({
         options: {
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            //shadowUrl: 'images\markers_shadow.png',
+
             iconSize:     [25, 41],
             shadowSize:   [41, 41],
             iconAnchor:   [12, 41],
             popupAnchor:  [1, -34]
         }
     });
-    var greenIcon = new PinIcon({iconUrl: 'map-marker.svg'});
+    var greenIcon = new PinIcon({iconUrl: 'images/map-marker.svg'});
     
     mymap.addLayer(tiles);
     mymap.setView(London, 4);
 
 //To access user location 
-
+//topojsonSrc: '../data/world.json'
     var latlong = [];
     var userLocation = [];
     var miniMap = new L.Control.GlobeMiniMap({     
         land:'#03ac13',
         water:'#0195d0',
         marker:'#000',
-        topojsonSrc: '../data/world.json'
+        topojsonSrc: 'data/world.json'
     }).addTo(mymap);
 
     mymap.locate({setView: false}).on('locationfound', function(e){
@@ -159,10 +163,7 @@
                         $('#hour2').empty();
                         $('#hour3').empty();
                         $('#hour4').empty();
-                        // $('#hourWeather1').html('<img id="weatherIcon1" alt="weather icon" src=""></img>');
-                        // $('#hourWeather2').html('<img id="weatherIcon2" alt="weather icon" src=""></img>');
-                        // $('#hourWeather3').html('<img id="weatherIcon3" alt="weather icon" src=""></img>');
-                        // $('#hourWeather4').html('<img id="weatherIcon4" alt="weather icon" src=""></img>');
+                        
                         var time1 = moment(result['data']['hourly']['3']['dt']*1000).format("HH:mm");
                         var time2 = moment(result['data']['hourly']['6']['dt']*1000).format("HH:mm");
                         var time3 = moment(result['data']['hourly']['9']['dt']*1000).format("HH:mm");
@@ -333,7 +334,7 @@
       })
     mymap.addControl(weatherButton);
 
-    //News update
+    //Covid-19 update
     newsButton = L.easyButton({
         id: 'covid',
         position: 'topleft',
@@ -350,22 +351,20 @@
       });
      mymap.addControl(newsButton);
 
-      //National Holidays 
-    holidayButton = L.easyButton({
-        id: 'holiday',
-        position: 'topleft',
-        type: 'animate',
-        leafletClasses: true,
-        states:[{
-          stateName: 'show-news',
-          onClick: function(button, map){
-            $("#holidayModalScrollable").modal();
-          },
-          title: 'scovid 19 update',
-          icon: "fa-umbrella"
-        }]
-      });
-     mymap.addControl(holidayButton);
+    
+    
+
+
+
+//Exchange
+    var currencies = ["AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","EUR","GBP","HRK","HUF","IDR","ILS","INR","ISK","JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","USD","ZAR"];
+    
+    //Populate currencies -
+        $('#select').empty();
+        for (var i = 0; i <= currencies.length; i++) {
+            $('#from').append('<option value="' + currencies[i] + '">' + currencies[i] + '</option>');
+            $('#to').append('<option value="' + currencies[i] + '">' + currencies[i] + '</option>');
+        }
 
 
 
@@ -483,7 +482,10 @@ $.ajax({
             error: function(jqXHR, textStatus, errorThrown) {
                 // console.warn(errorThrown);
             }
-        });    
+        }); 
+        
+        //  Marker Cluster
+     var markers = L.markerClusterGroup();
 
         //Country City Markers-
         $.ajax({
@@ -495,11 +497,14 @@ $.ajax({
             },
             success: function(result) {
 
-                // console.log(result);
+                 //console.log(result.data.data[0]);
 
                 if (result.status.name == "ok") {
                     result['data']['data'].forEach(element => {
-                        L.marker([element.latitude, element.longitude], {icon: redIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>");
+                        markers.addLayer(L.marker([element.latitude, element.longitude], {icon: redIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>"));
+                        
+                
+                        mymap.addLayer(markers);
                     });
                 }
             
@@ -508,6 +513,8 @@ $.ajax({
                 // console.warn(jqXHR.responseText);
             }
         }); 
+
+        //Country City Clusters
 
         //getCountryInfo-
         $.ajax({
@@ -797,6 +804,9 @@ $.ajax({
             }
         });
 
+
+
+
         //News:
         $.ajax({
             url: "php/newsApi.php",
@@ -811,6 +821,9 @@ $.ajax({
                 
                 if (result.status.name == "ok" && result['data']['results']['0'] !== undefined) {
                     $("#newsCountry").empty();
+
+                    //To bring out the country name. 
+                    //Do this for holiday and picture modal - Very imporatant
                     $("#newsCountry").append($('#selectOption option:selected').text());
                     $("#articleTitle").html(result['data']['results']['0']['title']);
                     $("#articleDescription").html(result['data']['results']['0']['description']);
@@ -861,47 +874,6 @@ $.ajax({
             }
         });
 
-        // National Holidasy
-        $.ajax({
-            url: 'php/getHolidays.php',
-            type: 'POST',
-            dataType: "JSON",
-            data: {
-              country: $('#selectOption').val(),
-            },
-            success: function(result){
-                console.log(result);
-            //Using a for loop to retrieve the holidays from a given bordercode from the countryBorders.geo.json file. 
-              const holiday = result.data;
-              for (let i = 0; i < holiday.length; i++){
-                const holidayname = result.data[i].name;
-              const holidaydate = result.data[i].date;
-              const dateslice = holidaydate.slice(5)
-              var table = document.getElementById('holidayTable')
-              var row = `<tr>
-              <td class="holcol1">${holidayname}</td><td class="holcol2" >${dateslice}</td>
-              </tr>`
-              table.innerHTML += row;
-                
-              if (row){
-                $('#countryselect').change(function(){
-                  $('#holidayTable').empty();
-                })
-              }
-            }
-                
-            },
-
-            
-            //error: function(error){
-            //   error = "Lets try again"
-            //   console.log(error)
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.warn("There has been an error " + errorThrown);
-            }
-          })
-
-
         //Location Images:
         $.ajax({
             url: "php/locationImages.php",
@@ -912,7 +884,7 @@ $.ajax({
             },
             success: function(result) {
 
-                 //console.log(result);
+                // console.log(result);
                 $("#countryImages").empty();
                 
                 if (result.status.name == "ok") {
@@ -932,10 +904,3 @@ $.ajax({
             }
         });
     });
-
-    
-
-
-
-
-//
