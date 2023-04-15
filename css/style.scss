@@ -51,9 +51,7 @@ $theme-colors:(
     }
 }
 
-// Fonts:
-// font-family: 'Noto Sans KR', sans-serif;
-// font-family: 'Poppins', sans-serif;
+
 
 
 body{
@@ -73,7 +71,7 @@ body{
 .selectOption{
     max-width: 100%;
     border-radius: 5px;
-    border: solid black;
+    border: solid white;
     margin:auto;
     text-align: center;
     float:right
@@ -196,22 +194,7 @@ button{
     width: 50%;
 }
 
-//Exchange
-#value{
-    width: 75%;
-}
-#exchangeResult{
-    flex: row;
-    justify-content: center;
-    align-items: center;
-}
-#exchangeBtn{
-    color: white;
-}
-.exchangeInput{
-    color:black;
-    font-weight: bolder;
-}
+/
 
 //Country images
 .countryImages{
@@ -243,7 +226,7 @@ button{
     max-height: 90vh;
 }
 .modal-content{
-    background-color: black;
+    background-color: #dd97c2;
     margin: 0;
     height: 100%;
     max-height: 100vh;
@@ -257,6 +240,7 @@ table {
     max-width: 100%;
     width:100%;
     max-height: 100%;
+    color: #dd97c2;
 }
 .modal-header h4 {
     text-align: left;
@@ -274,6 +258,9 @@ table {
 }
 .modal-header i:hover {
     color: dimgray;
+}
+.modal-footer {
+    color: #75124f;
 }
 .modalClose {
    height: 30px;
@@ -297,10 +284,7 @@ table {
     background-color: lightgrey;
 }
 
-// Media Queries:
-//576px
-// @include media-breakpoint-up(sm) { ... }
-//768px
+
 @include media-breakpoint-up(md) { 
     //Header
     #title{

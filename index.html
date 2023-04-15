@@ -26,7 +26,7 @@
 
     <!--Header-->
     <div>
-      <nav class="navbar navbar-light" style="background-color: #dd97c2;">
+      <nav class="navbar bg-danger navbar-light">
           <div id="header" class="row align-items-center container-fluid">
               
               <div class="my-col nav-header col-6  row align-items-center">
@@ -47,7 +47,7 @@
       <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header bg-info text-white">
-            <h4 class="modal-title" id="infoModalScrollableTitle" data-dismiss="modal"><img src="" class=flagurl> <span class="txtcountry"></span> Country Information</h4>
+            <h2 class="modal-title" id="infoModalScrollableTitle" data-dismiss="modal">  Country Information</h2>
            
             <button type="button" class="btn-close col-2" data-dismiss="modal" aria-label="Close">
               close
@@ -55,7 +55,7 @@
           </div>
           <div class="modal-body" id="page1">
             <div class="row info-panel" aria-labelledby="headingOne">                          
-              <table class="table table-dark col-12 m-0"style="background-color: #dd97c2;">
+              <table class="table table-primary col-12 m-0">
                 <thead>
                   <tr>
                     <th id="countryName"></th>
@@ -78,7 +78,7 @@
                   
                 </tbody>
               </table>
-              <div id="wiki" class="col-12" style="background-color:black;">
+              <div id="wiki" class="col-12">
                 <h3>Wikipedia Article : <span id="sumTitle"></span> </h2>
                 <blockquote class="blockquote text-left">
                 <p id="summary"></p>
@@ -93,7 +93,7 @@
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-light text-black" data-dismiss="modal"style="background-color: #75124f;">Close</button>
+            <button type="button" class="btn btn-light bg-danger text-black" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -105,12 +105,12 @@
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header bg-info">
-            <h4 class="modal-title" id="weatherModalScrollableTitle" data-dismiss="modal">Weather</h4>
+            <h2 class="modal-title" id="weatherModalScrollableTitle" data-dismiss="modal">Weather Update</h2>
             <i class="fas fa-window-close col-2" data-dismiss="modal"></i>
           </div>
           <div class="modal-body" id="page2">
             <div class="row infoPanel p-0 m-0" aria-labelledby="headingTwo">
-              <table class="table table-dark table-striped col-12 m-0" style="background-color: #75124f;">
+              <table class="table bg-danger table-striped text-white col-12 m-0" >
                 <tbody id=weatherBody>
                   <tr>
                     <th>
@@ -173,7 +173,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal" style="background-color: #75124f;">Close</button>
+            <button type="button" class="btn btn-secondary bg-danger modalClose" data-dismiss="modal" >Close</button>
           </div>
         </div>
       </div>
@@ -197,7 +197,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal"style="background-color: #75124f;">Close</button>
+            <button type="button" class="btn btn-secondary bg-danger modalClose" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@
           </div>
           <div class="modal-body" id="page3">
             <div class="row infoPanel p-0 m-0" aria-labelledby="headingThree">
-              <table class="table table-dark table-stripped col-12 m-0" id="articleTable"style="background-color: #75124f";>
+              <table class="table table-dark bg-danger table-stripped col-12 m-0" id="articleTable";>
                 <thead>
                   <tr >
                     <th><h3>Latest Headlines - <span id="newsCountry"></span></h3></th>
@@ -240,7 +240,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary bg-danger modalClose" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
