@@ -256,7 +256,7 @@
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(jqXHR + " There has been an error! " + errorThrown)
+                //alert(jqXHR + " There has been an error! " + errorThrown)
             }
         });
 
@@ -286,7 +286,7 @@
         }); 
 
     }). on('locationerror', function(e) {
-        console.log(e);
+        //console.log(e);
         alert("Location access denied.");
        //$("#selectOption ").val().change();
         var defaultLocation = [51.5074, -0.1278]; // London coordinates
@@ -496,7 +496,7 @@
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert(jqXHR + " There has been an error! " + errorThrown)
+                //alert(jqXHR + " There has been an error! " + errorThrown)
             }
         });
 
@@ -822,7 +822,7 @@ $.ajax({
             
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                alert("There has been an error!")
+                //alert("There has been an error!")
             }
         }); 
 

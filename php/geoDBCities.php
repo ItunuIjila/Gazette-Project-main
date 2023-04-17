@@ -4,7 +4,8 @@ $executionStartTime = microtime(true) / 1000;
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-	CURLOPT_URL => "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=" . $_REQUEST['country'] . "&minPopulation=1000000",
+	//CURLOPT_URL => "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=" . $_REQUEST['country'] . "&minPopulation=1000000",
+	CURLOPT_URL => "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=" . $_REQUEST['country'] . "&minPopulation=1000",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
 	CURLOPT_ENCODING => "",
