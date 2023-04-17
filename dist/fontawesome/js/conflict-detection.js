@@ -722,7 +722,7 @@
               md5: md5
             }, parentOrigin);
           } else {
-            console.error(e);
+            .error(e);
           }
         });
       };

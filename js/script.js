@@ -22,8 +22,8 @@
     });
     var redIcon = new L.Icon({
         iconUrl: 'images/maple-leaf.svg',
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        //shadowUrl: 'images\markers_shadow.png',
+        
+        shadowUrl: 'images/markers_shadow.png',
 
         iconSize: [25, 41],
         iconAnchor: [12, 41],
@@ -32,8 +32,7 @@
     })
     var PinIcon = L.Icon.extend({
         options: {
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-            //shadowUrl: 'images\markers_shadow.png',
+            shadowUrl: 'images/markers_shadow.png',
 
             iconSize:     [25, 41],
             shadowSize:   [41, 41],
@@ -56,7 +55,7 @@
 }
 
 //To access user location 
-//topojsonSrc: '../data/world.json'
+
     var latlong = [];
     var userLocation = [];
     var miniMap = new L.Control.GlobeMiniMap({     
@@ -335,7 +334,7 @@
                 lon: userLocation[1]
             },
             success: function(result) {
-                console.log(result);
+                //console.log(result);
                 if (result.status.name == "ok" && result['data']['current'] != undefined) {
 
                     //Onload:
@@ -777,10 +776,18 @@ $.ajax({
                 // console.log(result);
 
                 if (result.status.name == "ok") {
+                
+
                     $("#countryName").html(result['data'][0]['countryName']);
                     $('#capital').html(result['data'][0]['capital']);
-                    $('#area').html(result['data'][0]['areaInSqKm'] + " km<sup>2</sup>");
-                    $('#population').html(result['data'][0]['population']);
+                    const area = result['data'][0]['areaInSqKm'];
+                    const areaFormatter = new Intl.NumberFormat('en-US');
+                    const formattedArea = areaFormatter.format(area);
+                    $('#area').html(formattedArea + " km<sup>2</sup>");
+                    $('#population').html(Number(result['data'][0]['population']).toLocaleString());
+                   
+                    
+                    
                 }
             
             },
@@ -1131,7 +1138,7 @@ $.ajax({
               country: $('#selectOption').val(),
             },
             success: function(result){
-                console.log(result);
+                //console.log(result);
             //Using a for loop to retrieve the holidays from a given bordercode from the countryBorders.geo.json file. 
               const holiday = result.data;
               for (let i = 0; i < holiday.length; i++){
@@ -1154,11 +1161,9 @@ $.ajax({
             },
 
             
-            // error: function(error){
-            //   error = "Lets try again"
-            //   console.log(error)
+            
             error: function(jqXHR, textStatus, errorThrown) {
-                console.warn("There has been an error " + errorThrown);
+                //console.warn("There has been an error " + errorThrown);
             }
           });
 
