@@ -10,6 +10,7 @@ $(window).on('load', function () {
 
 //Creating a map:
 var London = [52, -0.09];
+var defaultLocation = [51.5074, -0.1278]; // Default location is set to London
 var mymap = L.map('map');
 var tileUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}';
 var tiles = L.tileLayer(tileUrl, { 
@@ -55,16 +56,7 @@ function clearMap() {
 }
 
  
-//    if(markers){
-//       $('#SelectOption').change(function(){
-//         markers.eachLayer(function(layer){
-//           markers.removeLayer(layer)
-//         })
-//       })
-//     }
-  
-//To access user location 
-//topojsonSrc: '../data/world.json'
+
 var latlong = [];
 var userLocation = [];
 var miniMap = new L.Control.GlobeMiniMap({     
@@ -117,6 +109,8 @@ mymap.locate({setView: false}).on('locationfound', function(e){
 }). on('locationerror', function(e) {
     console.log(e);
     alert("Location access denied.");
+
+    $("#selectOption").val("GBR").change();
 });
 
 
