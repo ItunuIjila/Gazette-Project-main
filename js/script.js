@@ -8,9 +8,9 @@
     });
 
 
-//Creating a map:
-    var London = [52, -0.09];
-    var mymap = L.map('map');
+//Creating the map
+    var mymap = L.map('map').setView([52, -0.09], 4);
+
     var tileUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}';
     var tiles = L.tileLayer(tileUrl, { 
         attribution:'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -20,30 +20,28 @@
         maxZoom: 20,
         ext: 'png'
     });
-    var redIcon = new L.Icon({
+    var MapleLeafIcon = new L.Icon({
         iconUrl: 'images/maple-leaf.svg',
-        
         shadowUrl: 'images/markers_shadow.png',
-
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
+        iconSize: [25, 35],
+        iconAnchor: [12, 35],
         popupAnchor: [1, -34],
-        shadowSize: [41, 41]
+        shadowSize: [45, 45]
     })
-    var PinIcon = L.Icon.extend({
+    var mapIcon = L.Icon.extend({
         options: {
             shadowUrl: 'images/markers_shadow.png',
 
-            iconSize:     [25, 41],
-            shadowSize:   [41, 41],
-            iconAnchor:   [12, 41],
-            popupAnchor:  [1, -34]
+            iconSize:     [25, 35],
+            iconAnchor:   [12, 35],
+            popupAnchor:  [1, -30],
+            shadowSize:   [45, 45]
         }
     });
-    var greenIcon = new PinIcon({iconUrl: 'images/map-marker.svg'});
+    var greenIcon = new mapIcon({iconUrl: 'images/map-marker.svg'});
     
     mymap.addLayer(tiles);
-    mymap.setView(London, 4);
+    ;
 
      //  Marker Cluster
     var markers = L.markerClusterGroup();
@@ -740,7 +738,7 @@ $.ajax({
 
                 if (result.status.name == "ok") {
                     result['data']['data'].forEach(element => {
-                        markers.addLayer(L.marker([element.latitude, element.longitude], {icon: redIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>"));
+                        markers.addLayer(L.marker([element.latitude, element.longitude], {icon: MapleLeafIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>"));
                         
                 
                         mymap.addLayer(markers);
