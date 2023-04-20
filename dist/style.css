@@ -10952,7 +10952,8 @@ table {
   font-size: 35px;
 }
 
-#infoLeaf, #weatherLeaf, #newsLeaf, #imagesLeaf {
+#infoLeaf, #weatherLeaf, #newsLeaf,
+ #imagesLeaf {
   height: 30px;
 
   width: 30px;

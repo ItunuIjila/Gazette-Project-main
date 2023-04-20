@@ -69,8 +69,8 @@
     mymap.locate({setView: false}).on('locationfound', function(e){
 
         userLocation = [e.latitude, e.longitude]
-        var locationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('current location');
-        var circle =L.circle([e.latitude, e.longitude], e.accuracy/2, {
+        var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('current location');
+        var reddot =L.circle([e.latitude, e.longitude], e.accuracy/2, {
             weight: 1,
             color: 'red',
             fillColor: '#cacaca',
@@ -78,8 +78,8 @@
         });
 
 
-        mymap.addLayer(locationMarker);
-        mymap.addLayer(circle);
+        mymap.addLayer(userlocationMarker);
+        mymap.addLayer(reddot);
 
 
         //Weather:
@@ -289,15 +289,15 @@
        
         var defaultLocation = [51.5074, -0.1278]; // London coordinates
         userLocation = defaultLocation;
-        var locationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
-        var circle = L.circle(userLocation, 1000, {
+        var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
+        var reddot = L.circle(userLocation, 1000, {
             weight: 1,
             color: 'red',
             fillColor: '#cacaca',
             fillOpacity: 0.2
         });
-        mymap.addLayer(locationMarker);
-        mymap.addLayer(circle);
+        mymap.addLayer(userlocationMarker);
+        mymap.addLayer(reddot);
 
          //change selectOption to users location:
     $.ajax({

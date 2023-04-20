@@ -17,7 +17,7 @@
 			position: 'bottomright',
 			width: 82,
 			height: 82,
-			land: "#bbb",
+			land: "#03ac13",
 			water: "rgba(0, 0, 0, 0.3)",
 			marker: "#CC0000",
 			topojsonSrc: 'data/world.json'
