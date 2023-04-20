@@ -28,7 +28,7 @@
         popupAnchor: [1, -34],
         shadowSize: [45, 45]
     })
-    var mapIcon = L.Icon.extend({
+    var myIcon = L.Icon.extend({
         options: {
             shadowUrl: 'images/markers_shadow.png',
 
@@ -38,7 +38,7 @@
             shadowSize:   [45, 45]
         }
     });
-    var greenIcon = new mapIcon({iconUrl: 'images/map-marker.svg'});
+    var mapIcon = new myIcon({iconUrl: 'images/map-marker.svg'});
     
     mymap.addLayer(tiles);
     ;
@@ -69,7 +69,7 @@
     mymap.locate({setView: false}).on('locationfound', function(e){
 
         userLocation = [e.latitude, e.longitude]
-        var locationMarker = L.marker(userLocation, {icon: greenIcon}).bindPopup('current location');
+        var locationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('current location');
         var circle =L.circle([e.latitude, e.longitude], e.accuracy/2, {
             weight: 1,
             color: 'red',
@@ -289,7 +289,7 @@
        //$("#selectOption ").val().change();
         var defaultLocation = [51.5074, -0.1278]; // London coordinates
         userLocation = defaultLocation;
-        var locationMarker = L.marker(userLocation, {icon: greenIcon}).bindPopup('default location: London');
+        var locationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
         var circle = L.circle(userLocation, 1000, {
             weight: 1,
             color: 'red',
