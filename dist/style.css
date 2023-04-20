@@ -10952,9 +10952,9 @@ table {
   font-size: 35px;
 }
 
-#infoLeaf, #weatherLeaf, #newsLeaf, #exchangeLeaf, #imagesLeaf {
+#infoLeaf, #weatherLeaf, #newsLeaf, #imagesLeaf {
   height: 30px;
-  /* easyButton's height default */
+
   width: 30px;
   /*  easyButton's width default */
   font-size: 18px;

@@ -10,9 +10,7 @@
 
 //Creating the map
     var mymap = L.map('map').setView([52, -0.09], 4);
-
-    var tileUrl = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}';
-    var tiles = L.tileLayer(tileUrl, { 
+    var tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', { 
         attribution:'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         attribution:'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         subdomains: 'abcd',
@@ -20,6 +18,8 @@
         maxZoom: 20,
         ext: 'png'
     });
+
+    //Creating icons using L.Icon library
     var MapleLeafIcon = new L.Icon({
         iconUrl: 'images/maple-leaf.svg',
         shadowUrl: 'images/markers_shadow.png',
@@ -31,13 +31,13 @@
     var myIcon = L.Icon.extend({
         options: {
             shadowUrl: 'images/markers_shadow.png',
-
             iconSize:     [25, 35],
             iconAnchor:   [12, 35],
             popupAnchor:  [1, -30],
             shadowSize:   [45, 45]
         }
     });
+
     var mapIcon = new myIcon({iconUrl: 'images/map-marker.svg'});
     
     mymap.addLayer(tiles);
@@ -45,7 +45,7 @@
 
      //  Marker Cluster
     var markers = L.markerClusterGroup();
-
+//Function to remove map layers 
     function clearMap() {
     markers.eachLayer(function (layer) {
         mymap.removeLayer(layer);
@@ -286,7 +286,7 @@
     }). on('locationerror', function(e) {
         //console.log(e);
         alert("Location access denied.");
-       //$("#selectOption ").val().change();
+       
         var defaultLocation = [51.5074, -0.1278]; // London coordinates
         userLocation = defaultLocation;
         var locationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
