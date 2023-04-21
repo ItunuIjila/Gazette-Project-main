@@ -894,10 +894,6 @@ $.ajax({
                     
                     var date = result['data']['results']['0']['publishedAt'];
                     $("#publishedAt").html(moment(date).format('DD-MM-YYYY'));
-                    // $("#articleUrl").html('https://' + result['data']['results']['0']['link']);
-                    // $("#articleUrl").attr("href",'https://' +  result['data']['results']['0']['link']);
-
-                    // Format article URL as clickable link that opens in new tab
                     var articleUrl = result['data']['results']['0']['link'];
                     var linkText = "Read full article";
                     var articleLink = '<a href="' + articleUrl + '" target="_blank">' + linkText + '</a>';
@@ -915,8 +911,11 @@ $.ajax({
                         $("#articleAuthor").html(result['data']['results'][i]['author']);
                         var date = result['data']['results'][i]['publishedAt'];
                         $("#publishedAt").html(moment(date).format('DD-MM-YYYY'));
-                        $("#articleUrl").html('https://' + result['data']['results'][i]['link']);
-                        $("#articleUrl").attr("href",'https://' +  result['data']['results'][i]['url']);
+                        var articleUrl = result['data']['results']['i']['link'];
+                        var linkText = "Read full article";
+                        var articleLink = '<a href="' + articleUrl + '" target="_blank">' + linkText + '</a>';
+                        $("#articleUrl").html(articleLink);
+                        
                     }
                 });
                 
@@ -931,8 +930,10 @@ $.ajax({
                         $("#articleAuthor").html(result['data']['results'][i]['author']);
                         var date = result['data']['results'][i]['publishedAt'];
                         $("#publishedAt").html(moment(date).format('DD-MM-YYYY'));
-                        $("#articleUrl").html('https://' + result['data']['results'][i]['link']);
-                        $("#articleUrl").attr("href", 'https://' + result['data']['results'][i]['link']);
+                        var articleUrl = result['data']['results']['i']['link'];
+                        var linkText = "Read full article";
+                        var articleLink = '<a href="' + articleUrl + '" target="_blank">' + linkText + '</a>';
+                        $("#articleUrl").html(articleLink);
                     }
                 });
             
