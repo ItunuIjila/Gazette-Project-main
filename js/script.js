@@ -64,12 +64,11 @@
         userLocation = [e.latitude, e.longitude]
         var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('current location');
         var reddot =L.circle([e.latitude, e.longitude], e.accuracy/2, {
-            weight: 1,
-            color: 'red',
-            fillColor: '#cacaca',
-            fillOpacity: 0.2
+            weight: 2,
+            color: 'blue'
+            
         });
-
+        
 
         mymap.addLayer(userlocationMarker);
         mymap.addLayer(reddot);
@@ -285,9 +284,8 @@
         var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
         var reddot = L.circle(userLocation, 1000, {
             weight: 1,
-            color: 'red',
-            fillColor: '#cacaca',
-            fillOpacity: 0.2
+            color: 'blue'
+           
         });
         mymap.addLayer(userlocationMarker);
         mymap.addLayer(reddot);
