@@ -27,7 +27,6 @@
 
 
 var mymap = L.map('map',{
-    zoomControl: false,
     layers: [tiles]
   }).setView([54.5, -4], 6);
   
@@ -856,7 +855,13 @@ $.ajax({
                     $("#sumTitle").append(result['data']['0']['title']);
                     $("#summary").html(result['data']['0']['summary']);
                     $("#wikipediaUrl").attr('href', result['data']['0']['wikipediaUrl']);
-                    $("#wikipediaUrl").html(result['data']['0']['wikipediaUrl']);                
+                    
+                     // Format Wikipedia URL as clickable link that opens in new tab
+                     var wikipediaUrl = ('https://' + result['data']['0']['wikipediaUrl']);
+                     var linkText = "Read more on Wikipedia";
+                     var wikipediaLink = '<a href="' + wikipediaUrl + '" target="_blank">' + linkText + '</a>';
+                        $("#wikipediaUrl").html(wikipediaLink);
+                       
                 }
             
             },
@@ -876,7 +881,7 @@ $.ajax({
             },
             success: function(result) {
 
-                  //console.log(result.data.results[0]);
+                  console.log(result.data.results[0]);
                 
                 if (result.status.name == "ok" && result['data']['results']['0'] !== undefined) {
                     $("#newsCountry").empty();
@@ -889,8 +894,14 @@ $.ajax({
                     
                     var date = result['data']['results']['0']['publishedAt'];
                     $("#publishedAt").html(moment(date).format('DD-MM-YYYY'));
-                    $("#articleUrl").html('https://' + result['data']['results']['0']['link']);
-                    $("#articleUrl").attr("href",'https://' +  result['data']['results']['0']['link']);
+                    // $("#articleUrl").html('https://' + result['data']['results']['0']['link']);
+                    // $("#articleUrl").attr("href",'https://' +  result['data']['results']['0']['link']);
+
+                    // Format article URL as clickable link that opens in new tab
+                    var articleUrl = result['data']['results']['0']['link'];
+                    var linkText = "Read full article";
+                    var articleLink = '<a href="' + articleUrl + '" target="_blank">' + linkText + '</a>';
+                    $("#articleUrl").html(articleLink);
                 }
                 var i = 0;
                 $("#nextArticle").on('click', function() {
