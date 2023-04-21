@@ -56,13 +56,6 @@
 
     var latlong = [];
     var userLocation = [];
-    var miniMap = new L.Control.GlobeMiniMap({     
-        land:'#03ac13',
-        water:'#0195d0',
-        marker:'#000',
-        topojsonSrc: 'data/world.json'
-    }).addTo(mymap);
-
 
     
 
