@@ -2,9 +2,9 @@
 
     $executionStartTime = microtime(true) / 1000;
 
-    $username = "djevy";
+   
 
-    $url ="http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=" . $_REQUEST['country']  . "&username=" . $username . "&style=full";
+    $url ="http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=" . $_REQUEST['country']  . "&username=noblestar"  . "&style=full";
     
     //CURL
     //1.Initalise a new cURL resource(ch= curl handle)

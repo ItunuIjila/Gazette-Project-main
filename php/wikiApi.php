@@ -3,7 +3,7 @@
     $executionStartTime = microtime(true) / 1000;
     $value= $_REQUEST['country'];
 
-    $url = "http://api.geonames.org/wikipediaSearchJSON?title=" . urlencode($value) . "&maxRows=10&username=djevy";
+    $url = "http://api.geonames.org/wikipediaSearchJSON?title=" . urlencode($value) . "&maxRows=10&username=noblestar";
 
     //CURL
     //1.Initalise a new cURL resource(ch= curl handle)
