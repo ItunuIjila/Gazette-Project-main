@@ -662,8 +662,8 @@ $.ajax({
         //console.log(result);
 
         if (result.status.name == "ok") {
-            for (var i = 0; i < result.data.length; i++) {
-                $('#selectOption').append("<option value=" + result['data'][i]['code'] + ">" + result['data'][i]['name'] + "</option>");
+            for (var j = 0; j < result.data.length; j++) {
+                $('#selectOption').append("<option value=" + result['data'][j]['code'] + ">" + result['data'][j]['name'] + "</option>");
             }
         }
     
@@ -722,7 +722,7 @@ $.ajax({
 
         //Country City Markers-
         $.ajax({
-            url: "php/getGeoDBCities.php",
+            url: "php/getGeoCities.php",
             type: 'POST',
             dataType: 'json',
             data: {
@@ -730,7 +730,7 @@ $.ajax({
             },
             success: function(result) {
 
-                console.log(result);
+                //console.log(result);
 
                 if (result.status.name == "ok") {
                     result['data']['data'].forEach(element => {
