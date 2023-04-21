@@ -152,12 +152,12 @@
     mymap.locate({setView: false}).on('locationfound', function(e){
 
         userLocation = [e.latitude, e.longitude]
-        var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('current location');
-        var reddot =L.circle([e.latitude, e.longitude], e.accuracy/2, {
-            weight: 2,
-            color: 'blue'
+        // var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('current location');
+        // var reddot =L.circle([e.latitude, e.longitude], e.accuracy/2, {
+        //     weight: 2,
+        //     color: 'blue'
             
-        });
+        // });
         
 
         mymap.addLayer(userlocationMarker);
@@ -369,14 +369,14 @@
        
         var defaultLocation = [51.5074, -0.1278]; // London coordinates
         userLocation = defaultLocation;
-        var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
-        var reddot = L.circle(userLocation, 1000, {
-            weight: 1,
-            color: 'blue'
+        // var userlocationMarker = L.marker(userLocation, {icon: mapIcon}).bindPopup('default location: London');
+        // var reddot = L.circle(userLocation, 1000, {
+        //     weight: 1,
+        //     color: 'blue'
            
-        });
-        mymap.addLayer(userlocationMarker);
-        mymap.addLayer(reddot);
+        // });
+        // mymap.addLayer(userlocationMarker);
+        // mymap.addLayer(reddot);
 
     //change selectOption input to default location[London]:
     $.ajax({
