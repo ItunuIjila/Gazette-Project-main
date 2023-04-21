@@ -45,7 +45,9 @@
 
      //  Marker Cluster
     var markers = L.markerClusterGroup();
-//Function to remove map layers 
+
+
+    //Function to remove map layers 
     function clearMap() {
     markers.eachLayer(function (layer) {
         mymap.removeLayer(layer);
@@ -266,8 +268,6 @@
 
                 if (result.status.name == "ok") {
                     $("#selectOption").val(result['data']['countryCode']).change();
-                } else{
-                    $('#selectOption').val('GB').change();
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -290,7 +290,7 @@
         mymap.addLayer(userlocationMarker);
         mymap.addLayer(reddot);
 
-         //change selectOption to users location:
+    //change selectOption input to default location[London]:
     $.ajax({
         url: "php/getCountryCode.php",
         type: 'POST',

@@ -1,17 +1,16 @@
 <?php
 
     $executionStartTime = microtime(true) / 1000;
-
-    $username = "djevy";
-
-    $url ="http://api.geonames.org/countryCodeJSON?lat=" . $_REQUEST['lat']  . "&lng=" . $_REQUEST['lng'] . "&username=" . $username;
+    
+   
+    $url ="http://api.geonames.org/countryCodeJSON?&username=noblestar&lat=" . $_REQUEST['lat']  . "&lng=" . $_REQUEST['lng'] . "&username=noblestar";
     
     //CURL
-    //1.Initalise a new cURL resource(ch= curl handle)
+    
     $ch = curl_init();
 
-    //2.Set options
-    //set URL to send the request to:
+    //Set options
+    
     curl_setopt($ch, CURLOPT_URL, $url);
 
     //Return instead of outputting directly:
@@ -34,10 +33,11 @@
     //coneverts the JSON encoded string into a PHP variable:
     $decode = json_decode($result, true);
 
-    //Update HTTP status messages:
+    // HTTP status messages:
     $output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
     $output['status']['description'] = "mission saved";
+    
     //Show excution time:
     $output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
     //store the string of results in 'data':
