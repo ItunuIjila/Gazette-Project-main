@@ -670,12 +670,15 @@ $.ajax({
     },
 });
 
-//Select country
+// When a new country is selected
     $("#selectOption").change(function(){
+
+        //Clear previous markers
         clearMap()
+
         //Apply border
         $.ajax({
-            url: "php/countryBorders.php",
+            url: "php/getCountryBorders.php",
             type: "POST",
             dataType: "json",
             data: {
@@ -684,7 +687,7 @@ $.ajax({
 
             success: function(result) {
 
-                // console.log(result);
+                 //console.log(result);
         
                 if (result.status.name == "ok") {
                     var bounds = result.data;
@@ -719,7 +722,7 @@ $.ajax({
 
         //Country City Markers-
         $.ajax({
-            url: "php/geoDBCities.php",
+            url: "php/getGeoDBCities.php",
             type: 'POST',
             dataType: 'json',
             data: {
@@ -727,7 +730,7 @@ $.ajax({
             },
             success: function(result) {
 
-                 //console.log(result.data.data[0]);
+                console.log(result);
 
                 if (result.status.name == "ok") {
                     result['data']['data'].forEach(element => {
@@ -748,7 +751,7 @@ $.ajax({
             
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                // console.warn(jqXHR.responseText);
+                 console.warn(jqXHR.responseText);
             }
         }); 
 

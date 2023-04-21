@@ -4,7 +4,7 @@ $executionStartTime = microtime(true) / 1000;
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-	//CURLOPT_URL => "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=" . $_REQUEST['country'] . "&minPopulation=1000000",
+	
 	CURLOPT_URL => "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?limit=10&countryIds=" . $_REQUEST['country'] . "&minPopulation=1000",
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_FOLLOWLOCATION => true,
@@ -15,9 +15,11 @@ curl_setopt_array($curl, [
 	CURLOPT_CUSTOMREQUEST => "GET",
 	CURLOPT_HTTPHEADER => [
 		"x-rapidapi-host: wft-geo-db.p.rapidapi.com",
-		"x-rapidapi-key: 0482f00706msh8983794f69679d3p1fd008jsn5c4d6a548f25"
+		"x-rapidapi-key: c715604ea6msh482d8130c40ae55p18bf57jsn1a3fb96e32a7"
 	],
 ]);
+
+
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
