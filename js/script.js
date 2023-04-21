@@ -732,6 +732,8 @@ $.ajax({
 
                 //console.log(result);
 
+                //Added Country Layers and marker Cluster
+
                 if (result.status.name == "ok") {
                     result['data']['data'].forEach(element => {
                         markers.addLayer(L.marker([element.latitude, element.longitude], {icon: MapleLeafIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>"));
@@ -739,6 +741,7 @@ $.ajax({
                 
                         mymap.addLayer(markers);
 
+                        //Function to remove marker clusters
                         if (markers){
                             $('#selectOption').change(function(){
                               markers.clearLayers();
@@ -751,11 +754,12 @@ $.ajax({
             
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                 console.warn(jqXHR.responseText);
+                 //console.warn(jqXHR.responseText);
             }
         }); 
 
-        //Country City Clusters
+       
+         //TO fill the easy button modals
 
         //getCountryInfo-
         $.ajax({
@@ -767,7 +771,7 @@ $.ajax({
             },
             success: function(result) {
 
-                // console.log(result);
+             console.log(result);
 
                 if (result.status.name == "ok") {
                 
