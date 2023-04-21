@@ -9,7 +9,8 @@
 
 
 //Creating the map
-    var mymap = L.map('map').setView([52, -0.09], 4);
+   
+    
     var tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', { 
         attribution:'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         attribution:'Map tiles by <a href="https://stamen.com">Stamen Design</a>, <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -18,6 +19,48 @@
         maxZoom: 20,
         ext: 'png'
     });
+
+    var satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+
+
+var mymap = L.map('map',{
+    zoomControl: false,
+    layers: [tiles]
+  }).setView([54.5, -4], 6);
+  
+  var baseMaps = {
+    "Satellite" : satellite,
+    "Streets" : tiles
+  
+  };
+  
+  L.control.layers(baseMaps, null, {position: 'bottomright'}).addTo(mymap);
+  
+
+
+// var airports = 
+// var airportIcon = L.ExtraMarkers.icon({
+//   icon: 'fa-plane',
+//   iconColor: 'black',
+//   markerColor: 'white',
+//   shape: 'square',
+//   prefix: 'fa'
+// });
+
+// var cityIcon = L.ExtraMarkers.icon({
+//   icon: 'fa-city',
+//   markerColor: 'green',
+//   shape: 'square',
+//   prefix: 'fa'
+// });
+
+
+
+
+
 
     //Creating icons using L.Icon library
     var MapleLeafIcon = new L.Icon({
