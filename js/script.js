@@ -41,7 +41,95 @@
     var mapIcon = new myIcon({iconUrl: 'images/map-marker.svg'});
     
     mymap.addLayer(tiles);
-    ;
+
+
+    //Easy Buttons:
+    //Info-
+    infoButton = L.easyButton({
+        id: 'infoLeaf',
+        position: 'topleft',
+        type: 'animate',
+        leafletClasses: true,
+        states:[{
+          stateName: 'show-info',
+          onClick: function(button, map){
+            $("#infoModalScrollable").modal();
+          },
+          title: 'show country information',
+          icon: "fa-globe"
+        }]
+      })
+    mymap.addControl(infoButton);
+
+      //Images-
+      imagesButton = L.easyButton({
+        id: 'imagesLeaf',
+        position: 'topleft',
+        type: 'animate',
+        leafletClasses: true,
+        states:[{
+          stateName: 'show-images',
+          onClick: function(button, map){
+            $("#imagesModalScrollable").modal();
+          },
+          title: 'show country images',
+          icon: "fa-camera-retro"
+        }]
+      });
+     mymap.addControl(imagesButton);
+    
+    // Weather-
+    
+    weatherButton = L.easyButton({
+        id: 'weatherLeaf',
+        position: 'topleft',
+        type: 'animate',
+        leafletClasses: true,
+        states:[{
+          stateName: 'show-weather',
+          onClick: function(button, map){
+            $("#weatherModalScrollable").modal();
+          },
+          title: 'show the weather',
+          icon: "fa-cloud-sun "
+        }]
+      })
+    mymap.addControl(weatherButton);
+
+    //News update
+    newsButton = L.easyButton({
+        id: 'News',
+        position: 'topleft',
+        type: 'animate',
+        leafletClasses: true,
+        states:[{
+          stateName: 'show-news',
+          onClick: function(button, map){
+            $("#newsModalScrollable").modal();
+          },
+          title: 'news update',
+          icon: "fa-bullhorn"
+        }]
+      });
+     mymap.addControl(newsButton);
+
+       //National Holidays 
+    holidayButton = L.easyButton({
+        id: 'holiday',
+        position: 'topleft',
+        type: 'animate',
+        leafletClasses: true,
+        states:[{
+          stateName: 'show-news',
+          onClick: function(button, map){
+            $("#holidayModalScrollable").modal();
+          },
+          title: 'Holiday update',
+          icon: "fa-umbrella"
+        }]
+      });
+     mymap.addControl(holidayButton);
+
 
      //  Marker Cluster
     var markers = L.markerClusterGroup();
@@ -301,7 +389,7 @@
         },
         success: function(result) {
 
-            // console.log(result);
+            //console.log(result);
 
             if (result.status.name == "ok") {
                 $("#selectOption").val(result['data']['countryCode']).change();
@@ -498,92 +586,6 @@
 
 
 
-//Easy Buttons:
-    //Info-
-    infoButton = L.easyButton({
-        id: 'infoLeaf',
-        position: 'topleft',
-        type: 'animate',
-        leafletClasses: true,
-        states:[{
-          stateName: 'show-info',
-          onClick: function(button, map){
-            $("#infoModalScrollable").modal();
-          },
-          title: 'show country information',
-          icon: "fa-globe"
-        }]
-      })
-    mymap.addControl(infoButton);
-
-      //Images-
-      imagesButton = L.easyButton({
-        id: 'imagesLeaf',
-        position: 'topleft',
-        type: 'animate',
-        leafletClasses: true,
-        states:[{
-          stateName: 'show-images',
-          onClick: function(button, map){
-            $("#imagesModalScrollable").modal();
-          },
-          title: 'show country images',
-          icon: "fa-camera-retro"
-        }]
-      });
-     mymap.addControl(imagesButton);
-    
-    // Weather-
-    
-    weatherButton = L.easyButton({
-        id: 'weatherLeaf',
-        position: 'topleft',
-        type: 'animate',
-        leafletClasses: true,
-        states:[{
-          stateName: 'show-weather',
-          onClick: function(button, map){
-            $("#weatherModalScrollable").modal();
-          },
-          title: 'show the weather',
-          icon: "fa-cloud-sun "
-        }]
-      })
-    mymap.addControl(weatherButton);
-
-    //News update
-    newsButton = L.easyButton({
-        id: 'News',
-        position: 'topleft',
-        type: 'animate',
-        leafletClasses: true,
-        states:[{
-          stateName: 'show-news',
-          onClick: function(button, map){
-            $("#newsModalScrollable").modal();
-          },
-          title: 'news update',
-          icon: "fa-bullhorn"
-        }]
-      });
-     mymap.addControl(newsButton);
-
-       //National Holidays 
-    holidayButton = L.easyButton({
-        id: 'holiday',
-        position: 'topleft',
-        type: 'animate',
-        leafletClasses: true,
-        states:[{
-          stateName: 'show-news',
-          onClick: function(button, map){
-            $("#holidayModalScrollable").modal();
-          },
-          title: 'Holiday update',
-          icon: "fa-umbrella"
-        }]
-      });
-     mymap.addControl(holidayButton);
 
 
 
@@ -651,7 +653,7 @@
 
 //Fill countries-
 $.ajax({
-    url: "php/countryNames.php",
+    url: "php/selectCountryNames.php",
     type: 'GET',
     dataType: 'json',
 
