@@ -441,6 +441,48 @@ var mymap = L.map('map',{
             // console.warn(jqXHR.responseText + "   " + errorThrown);
         }
     }); 
+    // Airports
+    $.ajax({
+        url: "php/getAirports.php",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            lat: defaultLocation[0],
+            lon: defaultLocation[1],
+        },
+        success: function(result) {
+
+        console.log(result['airport_list']['0']['name']);
+
+        // if (result.status.name == "ok") {
+        //     result['data']['data'].forEach(element => {
+        //         markers.addLayer(L.marker([element.lat_map, element.lon_map], {icon: MapleLeafIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>"));
+                
+        
+        //         mymap.addLayer(markers);
+
+        //         //Function to remove marker clusters
+        //         if (markers){
+        //             $('#selectOption').change(function(){
+        //               markers.clearLayers();
+        //               mymap.removeLayer(markers)
+        //             })
+                  
+        //           }  
+        //     });
+        // }
+    
+
+
+        
+
+            
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+             console.warn( errorThrown);
+        }
+    }); 
+
 
         
         //Weather:
@@ -848,7 +890,7 @@ $.ajax({
                 country: $('#selectOption option:selected').text(),
             },
             success: function(result) {            
-                 console.log(result);
+                 //console.log(result);
 
                 if (result.status.name == "ok") {
                     $("#sumTitle").empty();
@@ -881,7 +923,7 @@ $.ajax({
             },
             success: function(result) {
 
-                  console.log(result.data.results[0]);
+                  //console.log(result.data.results[0]);
                 
                 if (result.status.name == "ok" && result['data']['results']['0'] !== undefined) {
                     $("#newsCountry").empty();
