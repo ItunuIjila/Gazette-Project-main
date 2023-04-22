@@ -27,8 +27,7 @@
     <!-- selectOption -->
     
     <span id="selectContainer"> 
-                  <select name="country" id="selectOption" class="selectOption">
-                  </select>
+    <select name="country" id="selectOption" class="selectOption"></select>
     </span>
          
 
@@ -40,8 +39,8 @@
           <div class="modal-header bg-info text-white">
             <h2 class="modal-title" id="holidayModalScrollableTitle" data-dismiss="modal">  National Holidays</h2>
            
-            <button type="button" class="btn-close col-2" data-dismiss="modal" aria-label="Close">
-              close
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" id="page1">
@@ -62,7 +61,7 @@
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-light bg-danger text-black" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -74,9 +73,9 @@
         <div class="modal-content">
           <div class="modal-header bg-info text-white">
             <h2 class="modal-title" id="infoModalScrollableTitle" data-dismiss="modal">  Country Information</h2>
-           
-            <button type="button" class="btn-close col-2" data-dismiss="modal" aria-label="Close">
-              close
+
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" id="page1">
@@ -118,7 +117,7 @@
                 <h3>Wikipedia Article : <span id="sumTitle"></span> </h2>
                 <blockquote class="blockquote text-left">
                 <p id="summary"></p>
-                <footer class="blockquote-footer align-items-center"><p class="sourced"></p> <cite title="Source Title"><a id="wikipediaUrl" class="text-white"></a></cite></footer>
+                <footer class="blockquote-footer align-items-center text-white"><p class="sourced"></p> <cite title="Source Title" class="text-white"><a id="wikipediaUrl" ></a></cite></footer>
                 </blockquote>
               </div>
             </div>
@@ -129,7 +128,8 @@
           </div>
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-light bg-danger text-black" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -142,23 +142,25 @@
         <div class="modal-content">
           <div class="modal-header bg-info">
             <h2 class="modal-title" id="weatherModalScrollableTitle" data-dismiss="modal">Weather Update</h2>
-            <i class="fas fa-window-close col-2" data-dismiss="modal"></i>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body" id="page2">
             <div class="row infoPanel p-0 m-0" aria-labelledby="headingTwo">
-              <table class="table bg-danger table-striped text-white col-12 m-0" >
+              <table class="table bg-info table-striped text-white col-12 m-0" >
                 <tbody id=weatherBody>
-                  <tr>
-                    <th>
+                  <tr class="h2">
+                    <th >
                     <nav id="dayNav" class=".justify-content-center">
-                      <a class="nav-link" id="day1" href="javascript:void(0)">Today</a>
-                      <a class="nav-link" id="day2" href="javascript:void(0)">Tomorrow</a>
+                      <a class="nav-link" id="day1" href="javascript:void(0)"><strong>Today</strong></a>
+                      <a class="nav-link" id="day2" href="javascript:void(0)"><strong>Tomorrow</strong></a>
                     </nav>
                     </th> 
                     <th>
                     <nav>
-                      <a class="nav-link" id="day3" href="javascript:void(0)"></a>
-                      <a class="nav-link" id="day4" href="javascript:void(0)"></a>
+                      <a class="nav-link" id="day3" href="javascript:void(0)"><strong></strong></a>
+                      <a class="nav-link" id="day4" href="javascript:void(0)"><strong></strong></a>
                     </nav>
                     </th>
                   </tr>
@@ -209,7 +211,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary bg-danger modalClose" data-dismiss="modal" >Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -224,7 +226,9 @@
         <div class="modal-content">
           <div class="modal-header bg-info text-white">
             <h4 class="modal-title col-10" id="imagesModalScrollableTitle" data-dismiss="modal">Images</h4>
-            <i class="fas fa-window-close col-2" data-dismiss="modal"></i>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body" id="page5"> 
             <div class="row infoPanel p-0 m-0" aria-labelledby="headingFive">
@@ -233,7 +237,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary bg-danger modalClose" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -245,18 +249,20 @@
         <div class="modal-content">
           <div class="modal-header bg-info text-white">
             <h4 class="modal-title col-10" id="newsModalScrollableTitle" data-dismiss="modal">News</h4>
-            <i class="fas fa-window-close col-2" data-dismiss="modal"></i>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
           <div class="modal-body" id="page3">
             <div class="row infoPanel p-0 m-0" aria-labelledby="headingThree">
-              <table class="table table-dark bg-danger table-stripped col-12 m-0" id="articleTable";>
+              <table class="table table-dark  table-stripped col-12 m-0" id="articleTable";>
                 <thead>
                   <tr >
                     <th><h3>Latest Headlines - <span id="newsCountry"></span></h3></th>
                 </thead>
                 <tbody>
                   <tr >
-                    <td><button class="articleBtn" id="previousArticle">Previous Story</button><button class="articleBtn" id="nextArticle">Next Story</button></td>
+                    <td><button class="articleBtn btn btn-outline-primary" id="previousArticle">Previous Story</button><button class="articleBtn btn btn-outline-primary" id="nextArticle">Next Story</button></td>
                   </tr>
                   <tr >
                     <th id="articleTitle"></th>
@@ -276,7 +282,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary bg-danger modalClose" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
