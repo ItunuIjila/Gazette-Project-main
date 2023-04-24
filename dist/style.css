@@ -84,11 +84,10 @@ body {
 .selectOption {
   max-width: 100%;
   border-radius: 5px;
-  margin: auto;
+  margin-right: 20px;
   text-align: center;
   float: right;
 }
-
 
 
 
@@ -104,6 +103,7 @@ body {
   top: 0;
   z-index: 0;
 }
+
 
 #selectContainer {
   position: fixed;
@@ -256,6 +256,8 @@ table {
   #countrySelect {
     width: 100%;
   }
+
+
   .noMobile {
     display: block;
   }
