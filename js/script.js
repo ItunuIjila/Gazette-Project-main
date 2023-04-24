@@ -37,32 +37,27 @@ var mymap = L.map('map',{
   };
   
   L.control.layers(baseMaps, null, {position: 'bottomright'}).addTo(mymap);
-  
-
-
-// var airports = 
-// var airportIcon = L.ExtraMarkers.icon({
-//   icon: 'fa-plane',
-//   iconColor: 'black',
-//   markerColor: 'white',
-//   shape: 'square',
-//   prefix: 'fa'
-// });
-
-// var cityIcon = L.ExtraMarkers.icon({
-//   icon: 'fa-city',
-//   markerColor: 'green',
-//   shape: 'square',
-//   prefix: 'fa'
-// });
-
-
 
 
 
 
     //Creating icons using L.Icon library
-    var MapleLeafIcon = new L.Icon({
+    var MapleLeafIcon = L.ExtraMarkers.icon({
+  icon: 'fa-city',
+  markerColor: 'blue',
+  iconColor: 'white',
+  shape: 'square',
+  prefix: 'fa'
+});
+
+var airportIcon = L.ExtraMarkers.icon({
+    icon: 'fa-plane',
+    iconColor: 'black',
+    markerColor: 'white',
+    shape: 'square',
+    prefix: 'fa'
+  });
+    var Maple = new L.Icon({
         iconUrl: 'images/maple-leaf.svg',
         shadowUrl: 'images/markers_shadow.png',
         iconSize: [25, 35],
@@ -202,8 +197,8 @@ var mymap = L.map('map',{
         // });
         
 
-        mymap.addLayer(userlocationMarker);
-        mymap.addLayer(reddot);
+        
+        
 
 
         //Weather:
@@ -441,48 +436,7 @@ var mymap = L.map('map',{
             // console.warn(jqXHR.responseText + "   " + errorThrown);
         }
     }); 
-    // Airports
-    $.ajax({
-        url: "php/getAirports.php",
-        type: 'POST',
-        dataType: 'json',
-        data: {
-            lat: defaultLocation[0],
-            lon: defaultLocation[1],
-        },
-        success: function(result) {
-
-        console.log(result['airport_list']['0']['name']);
-
-        // if (result.status.name == "ok") {
-        //     result['data']['data'].forEach(element => {
-        //         markers.addLayer(L.marker([element.lat_map, element.lon_map], {icon: MapleLeafIcon}).addTo(mymap).bindPopup("<h1>" + element.name + "</h1> </br>"));
-                
-        
-        //         mymap.addLayer(markers);
-
-        //         //Function to remove marker clusters
-        //         if (markers){
-        //             $('#selectOption').change(function(){
-        //               markers.clearLayers();
-        //               mymap.removeLayer(markers)
-        //             })
-                  
-        //           }  
-        //     });
-        // }
-    
-
-
-        
-
-            
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-             console.warn( errorThrown);
-        }
-    }); 
-
+   
 
         
         //Weather:
